@@ -157,18 +157,16 @@ class ProjectsController extends Controller
     }
     public function deptHeadView()
     {
-        // if (Gate::allows('manage-projects')) {
+        if (Gate::allows('manage-projects')) {
+            $deptId = auth()->user()->department['id'];
 
-        // } else {
-        //     return back()->with('error', 'Sorry you cannot access this Page');
-        // }
-
-        $deptHeadId = auth()->user()->department['id'];
-
-        $allDepartmentProjects = $this->projects->allDepartmentProjects($deptHeadId);
-        $usersInDept = \App\User::all()->where('dept_id', $deptHeadId);
+            $allDepartmentProjects = $this->projects->allDepartmentProjects($deptId);
+            $usersInDept = \App\User::all()->where('dept_id', $deptId);
 
 
-        return view('projects.department-head-view', compact(['allDepartmentProjects', 'usersInDept']));
+            return view('projects.department-head-view', compact(['allDepartmentProjects', 'usersInDept']));
+        } else {
+            return back()->with('error', 'Sorry you cannot access this Page');
+        }
     }
 }

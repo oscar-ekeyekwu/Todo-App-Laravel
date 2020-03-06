@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\User;
 use Departments;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use Illuminate\Support\Facades\Gate;
 
 class DeptHeadPolicy
 {
@@ -15,8 +16,8 @@ class DeptHeadPolicy
      *
      * @return void
      */
-    public function view(User $user)
+    public function view()
     {
-        return $user->type['type'] == 'Department Head';
+        
     }
 }

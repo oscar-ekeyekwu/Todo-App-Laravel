@@ -16,9 +16,9 @@ class AuthServiceProvider extends ServiceProvider
      */
     protected $policies = [
 
-        'App\Projects' => 'App\Policies\ProjectsPolicy',
-        'App\Departments' => 'App\Policies\AdminPolicy',
-        'App\Status' => 'App\Policies\AdminPolicy'
+        \App\Projects::class => \App\Policies\ProjectsPolicy::class,
+        \App\Departments::class => \App\Policies\AdminPolicy::class,
+        \App\Status::class => \App\Policies\AdminPolicy::class 
     ];
 
     /**
@@ -30,7 +30,9 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        //Gate::define('projects.manage-projects', 'App\Policies\DeptHeadPolicy@view');
+        Gate::define('manage-projects', function ($user) {
+            return $user->type['id'] == 3;
+        });
 
         //
     }
