@@ -42,3 +42,8 @@ Route::resource('user', 'UserController');
 
 Route::view('/admin', '/admin.dashboard');
 
+// Route::group(['middleware' => 'role:admin'], function () {
+//     Route::get('/admins', function () {
+//         return 'Welcome Admin';
+//     });
+// });

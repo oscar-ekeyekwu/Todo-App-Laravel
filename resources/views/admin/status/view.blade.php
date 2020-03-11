@@ -28,7 +28,7 @@
                     @foreach($statuses as $status)
                     <tr>
                         <td>
-                            <label class="badge badge-pill" style="background-color: {{$status->color}} ">
+                            <label class="badge badge-pill" style="background-color: {{$status->bgColor}}; color:{{$status->textColor}}; ">
                                 {{ucwords($status->name)}}
                             </label>
                         </td>

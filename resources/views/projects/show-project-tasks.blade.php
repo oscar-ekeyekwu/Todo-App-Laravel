@@ -35,7 +35,7 @@
 
         <div class="pt-2 ml-3">
             <div class="d-inline-block p-2 float-right" style="text-align: right">
-                <a href="#" data-toggle="modal" data-target="#newProjectTask" class="newTaskBtn btn btn-light mt-6">
+                <a href="#" data-toggle="modal" data-target="#newProjectTask" class="newTaskBtn badge badge-success p-2 mt-6">
                     <i class="fa fa-plus"></i> New Task
                 </a>
             </div>
@@ -44,6 +44,8 @@
                     <tr>
                     <th>Task</th>
                     <th>Assigned To</th>
+                    <th>Start Date</th>
+                    <th>Due Date</th>
                     <th>Status</th>
                     <th colspan="2">Action</th>
                     </tr>
@@ -55,20 +57,22 @@
                         <td>
                             {{ucwords($task->description)}}
                         </td>
-                        <td class="w-50">
+                        <td>
                             @php
                                 $assignedTo = \App\Tasks::find($task->id)->users;
                                 echo ($assignedTo->name);
                             @endphp
                         </td>
                         <td>
-                            @foreach($statuses as $status)
-                                @if($status->id == $task->status_id)
-                                    <label class="badge badge-pill" style="background-color: {{$status->color}} ">
-                                        {{ucwords($status->name)}}
-                                    </label>
-                                @endif
-                            @endforeach
+
+                        </td>
+                        <td>
+
+                        </td>
+                        <td>
+                            <label class="badge badge-pill" style="background-color: {{$task->status['color']}} ">
+                                {{ucwords($task->status['name'])}}
+                            </label>
                         </td>
                         <td>
                             <div class="d-inline-block">
@@ -186,6 +190,18 @@
                                 </select>
                             </div>
                         @endif
+                        <div class="form-group flex d-flex">
+                            <div class="col col-md-6 d-inline-block">
+                                <label for="startDate"><strong>Start Date</strong></label>
+                                <input type="date" class="form-control date" id= "startDate" name="startDate" placeholder="Start Date" required>
+                            </div>
+
+                            <div class="col col-md-6 d-inline-block">
+                                <label for="dueDate"><strong>Due Date</strong></label>
+                                <input type="date" class="form-control date" id= "dueDate" name="dueDate" placeholder="Due Date" required>
+                            </div>
+                        </div>
+
                         <input type="hidden" name="projects_id" value="{{$project->id}}">
 
                         <div>

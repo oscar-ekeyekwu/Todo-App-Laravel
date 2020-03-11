@@ -61,7 +61,25 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
                             </div>
                         </div>
+                        <div class="form-group row">
+                            <label class="col-md-4 col-form-label text-md-right" for="select_dept">Select Department</label>
+                            <div class="col-md-6">
+                                <select class="form-control" id="select_dept" name="dept_id">
+                                    @php
+                                        $departments = \App\Departments::all();
+                                    @endphp
+                                  @if(!$departments->count() > 0)
+                                    <option>Nothing to Select</option>
+                                  @endif
+                                  @if($departments->count() > 0)
+                                    @foreach ($departments as $dept)
 
+                                <option value="{{($dept->id)}}">{{ ($dept->dept_name . ' - ' . $dept->dept_code)}}</option>
+                                    @endforeach
+                                  @endif
+                                </select>
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label text-md-right" for="userType">User Type</label>
                             <div class="col-md-6">

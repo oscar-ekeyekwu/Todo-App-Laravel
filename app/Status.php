@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Status extends Model
 {
-    protected $fillable = ['name', 'color', 'active'];
+    protected $fillable = ['name', 'bgColor', 'active', 'textColor'];
 
     public function task()
     {

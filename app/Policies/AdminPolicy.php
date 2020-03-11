@@ -14,8 +14,16 @@ class AdminPolicy
      *
      * @return void
      */
+
+
+
     public function __construct(User $user)
     {
-        return $user->type['type'] == 'admin';
+        echo ($user->type['type'] == "admin");
+    }
+
+    public function viewAny(User $user)
+    {
+        return $user->type['type'] == "admin";
     }
 }

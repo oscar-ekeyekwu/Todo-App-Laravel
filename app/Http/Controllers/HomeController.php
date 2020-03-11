@@ -23,16 +23,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $user = \App\User::find(auth()->id())->type;
+        $user = \App\User::find(auth()->id());
 
-        if ($user->type == "Department Head") {
-
+        if ($user->hasRole('deptHead')) {
             $userProjects = auth()->user()->projects;
             return view('user.headhome', compact('userProjects'));
-        } elseif ($user->type == "user") {
-            return redirect('user');
-        } else {
+        } elseif ($user->hasRole('admin')) {
             return redirect()->intended('/admin');
+        } else {
+            return redirect('user');
         }
     }
 }

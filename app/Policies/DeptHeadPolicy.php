@@ -16,8 +16,4 @@ class DeptHeadPolicy
      *
      * @return void
      */
-    public function view()
-    {
-        
-    }
 }

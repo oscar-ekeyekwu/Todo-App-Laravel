@@ -38,14 +38,14 @@
                     {{ucwords($user->type['type'])}}
                 </td>
                 <td>
-                    <a href="/admins/{{$user->id}}/edit" style="font-size: 12px;" class="badge badge-pill badge-primary">
-                        <i class="fa fa-pencil"></i> Edit
-                    </a>
-                </td>
-                <td>
-                    <a href="#" id="delbtn" class="badge badge-pill badge-danger" onclick="deleteUser({{$user->id}})" style="font-size: 12px;">
-                        <i class="fa fa-trash-o"></i> Delete
-                    </a>
+                    <div class="d-block">
+                        <a href="/admins/{{$user->id}}/edit" style="font-size: 12px;" class="badge badge-pill badge-primary">
+                            <i class="fa fa-pencil"></i> Edit
+                        </a>
+                        <a href="#" id="delbtn" class="badge badge-pill badge-danger" onclick="deleteUser({{$user->id}})" style="font-size: 12px;">
+                            <i class="fa fa-trash-o"></i> Delete
+                        </a>
+                    </div>
                 </td>
           </tr>
 	     @endforeach

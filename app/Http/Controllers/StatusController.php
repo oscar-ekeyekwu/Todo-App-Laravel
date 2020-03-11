@@ -10,7 +10,7 @@ class StatusController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->authorizeResource(Status::class, 'status');
+        //$this->authorizeResource(Status::class, 'status');
     }
     public function index()
     {
@@ -20,7 +20,9 @@ class StatusController extends Controller
 
     public function store()
     {
+
         $attr = request()->all();
+        
         if ($attr['active'] == 'yes') {
             $attr['active'] = 1;
         } else {
